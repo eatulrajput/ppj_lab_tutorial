@@ -1,0 +1,88 @@
+<!-- Let us consider the Fig.6. Design the full form structure on a static webpage
+using the HTML in VS Code. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form for operation on two numbers</title>
+</head>
+
+<body>
+    <!-- Name: Atul Rajput-->
+    <!-- Roll No.: 2230158 -->
+
+    <h2>Form for operation on two numbers</h2>
+
+    <form id="numberOperationForm" onsubmit="calculateResult(); return false;">
+        <label for="userType">Are you a:</label><br>
+        <input type="radio" id="student" name="userType" value="student">
+        <label for="student">Student</label><br>
+        <input type="radio" id="teacher" name="userType" value="teacher">
+        <label for="teacher">Teacher</label><br>
+        <input type="radio" id="other" name="userType" value="other">
+        <label for="other">Other</label><br><br>
+
+        <label for="subjects">Select Subjects:</label><br>
+        <input type="checkbox" id="physics" name="subject" value="physics">
+        <label for="physics">Physics</label><br>
+        <input type="checkbox" id="chemistry" name="subject" value="chemistry">
+        <label for="chemistry">Chemistry</label><br>
+        <input type="checkbox" id="maths" name="subject" value="maths">
+        <label for="maths">Maths</label><br><br>
+
+        <label for="operator">Select Operator:</label>
+        <select id="operator" name="operator">
+            <option value="addition">Addition</option>
+            <option value="subtraction">Subtraction</option>
+            <option value="multiplication">Multiplication</option>
+            <option value="division">Division</option>
+        </select><br><br>
+
+        <label for="operandA">Enter Number A:</label><br>
+        <input type="number" id="operandA" name="operandA" required><br><br>
+
+        <label for="operandB">Enter Number B:</label><br>
+        <input type="number" id="operandB" name="operandB" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function calculateResult() {
+            var operandA = parseFloat(document.getElementById("operandA").value);
+            var operandB = parseFloat(document.getElementById("operandB").value);
+            var operator = document.getElementById("operator").value;
+            var result;
+
+            switch (operator) {
+                case 'addition':
+                    result = operandA + operandB;
+                    break;
+                case 'subtraction':
+                    result = operandA - operandB;
+                    break;
+                case 'multiplication':
+                    result = operandA * operandB;
+                    break;
+                case 'division':
+                    if (operandB !== 0) {
+                        result = operandA / operandB;
+                    } else {
+                        result = "Cannot divide by zero";
+                    }
+                    break;
+                default:
+                    result = "Invalid operator";
+            }
+
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+    </script>
+
+</body>
+
+</html>
